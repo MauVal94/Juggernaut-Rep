@@ -5,6 +5,20 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 var Admin = require('./admin');
 
+//POST:create admin
+router.post('/', function (req,res){
+
+    Admin.create({
+        name : req.body.name
+    },
+    function (err, admin){
+        if(err){
+            return res.status(500).send("There was a problem adding the information to the database.");
+        }
+        res.status(200).send(admin);
+    });
+});
+
 //GET: get a admin from database
 router.get('/:id', function (req, res) {
     Admin.findById(req.params.id, function (err, admin) {
@@ -21,13 +35,6 @@ router.get('/', function (req, res) {
             return res.status(500).send("There was a problem finding the admin.");
         }
         res.status(200).send(admin);
-    });
-});
-
-//POST:create admin
-router.post('/', function (req,res){
-    Admin.create(req.body).then(function (admin){
-        res.status(200).send(admin)
     });
 });
 
