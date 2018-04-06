@@ -3,14 +3,40 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 
-var Driver = require('./user');
+var Driver = require('./driver');
 
-//get user from database
+//GET: get a driver from database
 router.get('/:id', function (req, res) {
-    Driver.findById(req.params.id, function (err, user) {
-        if (err) return res.status(500).send("There was a problem finding the user.");
-        if (!user) return res.status(404).send("No user found.");
-        res.status(200).send(user);
+    Driver.findById(req.params.id, function (err, driver) {
+        if (err) return res.status(500).send("There was a problem finding the driver.");
+        if (!driver) return res.status(404).send("No driver found.");
+        res.status(200).send(driver);
+    });
+});
+
+//GET: get all drivers from the database
+router.get('/', function (req, res) {
+    Driver.find({}, function (err, driver) {
+        if (err) {
+            return res.status(500).send("There was a problem finding the driver.");
+        }
+        res.status(200).send(driver);
+    });
+});
+
+//POST:create driver
+router.post('/', function (req,res){
+    Driver.create(req.body).then(function (driver){
+        res.status(200).send(driver)
+    });
+});
+
+//PUT: update driver info
+//DELETE: delete a driver
+router.delete('/:id', function (req, res) {
+    Driver.findByIdAndRemove(req.params.id, function (err, driver) {
+        if (err) return res.status(500).send("There was a problem deleting the driver.");
+        res.status(200).send("driver: "+ driver.name +" was deleted.");
     });
 });
 
