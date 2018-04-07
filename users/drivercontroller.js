@@ -3,46 +3,56 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 
-var Admin = require('./admin');
+var Driver = require('./driver');
 
-//POST:create admin
-router.post('/', function (req,res){
-
-    Admin.create({
-        name : req.body.name
-    },
-    function (err, admin){
-        if(err){
-            return res.status(500).send("There was a problem adding the information to the database.");
-        }
-        res.status(200).send(admin);
-    });
-});
-
-//GET: get a admin from database
+//GET: get a driver from database
 router.get('/:id', function (req, res) {
-    Admin.findById(req.params.id, function (err, admin) {
-        if (err) return res.status(500).send("There was a problem finding the admin.");
-        if (!admin) return res.status(404).send("No admin found.");
-        res.status(200).send(admin);
+    Driver.findById(req.params.id, function (err, driver) {
+        if (err) return res.status(500).send("There was a problem finding the driver.");
+        if (!driver) return res.status(404).send("No driver found.");
+        res.status(200).send(driver);
     });
 });
 
-//GET: get all admins from the database
+//GET: get all drivers from the database
 router.get('/', function (req, res) {
-    Admin.find({}, function (err, admin) {
+    Driver.find({}, function (err, driver) {
         if (err) {
-            return res.status(500).send("There was a problem finding the admin.");
+            return res.status(500).send("There was a problem finding the driver.");
         }
-        res.status(200).send(admin);
+        res.status(200).send(driver);
     });
 });
 
-//DELETE: delete a admin
+//POST:create driver
+router.post('/', function (req,res){
+    Driver.create({
+            name: req.body.name,
+            rating: req.body.rating,
+            longitude: req.body.longitude,
+            latitude: req.body.latitude,
+            available: req.body.available
+        },
+        function (err, driver) {
+            if (err) {
+                return res.status(500).send("There was a problem adding the information to the database.");
+            }
+            res.status(200).send(driver);
+        });
+});
+
+//PUT: update driver info
+router.put('/:id', function (req, res) {
+    Driver.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, driver) {
+        if (err) return res.status(500).send("There was a problem updating the driver.");
+            res.status(200).send(driver);
+    });
+});
+//DELETE: delete a driver
 router.delete('/:id', function (req, res) {
-    Admin.findByIdAndRemove(req.params.id, function (err, admin) {
-        if (err) return res.status(500).send("There was a problem deleting the admin.");
-        res.status(200).send("admin: "+ admin.name +" was deleted.");
+    Driver.findByIdAndRemove(req.params.id, function (err, driver) {
+        if (err) return res.status(500).send("There was a problem deleting the driver.");
+        res.status(200).send("driver: "+ driver.name +" was deleted.");
     });
 });
 
