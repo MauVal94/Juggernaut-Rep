@@ -3,47 +3,56 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 
-var Admin = require('./admin');
+var User = require('./user');
 
-//POST:create admin
-router.post('/', function (req,res){
-
-    Admin.create({
-        name : req.body.name
-    },
-    function (err, admin){
-        if(err){
-            return res.status(500).send("There was a problem adding the information to the database.");
-        }
-        res.status(200).send(admin);
-    });
-});
-
-//GET: get a admin from database
+//GET: get a user from database
 router.get('/:id', function (req, res) {
-    Admin.findById(req.params.id, function (err, admin) {
-        if (err) return res.status(500).send("There was a problem finding the admin.");
-        if (!admin) return res.status(404).send("No admin found.");
-        res.status(200).send(admin);
+    User.findById(req.params.id, function (err, user) {
+        if (err) return res.status(500).send("There was a problem finding the user.");
+        if (!user) return res.status(404).send("No user found.");
+        res.status(200).send(user);
     });
 });
 
-//GET: get all admins from the database
+//GET: get all users from the database
 router.get('/', function (req, res) {
-    Admin.find({}, function (err, admin) {
+    User.find({}, function (err, user) {
         if (err) {
-            return res.status(500).send("There was a problem finding the admin.");
+            return res.status(500).send("There was a problem finding the driver.");
         }
-        res.status(200).send(admin);
+        res.status(200).send(user);
     });
 });
 
-//DELETE: delete a admin
+//POST:create user
+router.post('/', function (req,res){
+    User.create({
+            name: req.body.name,
+            rating: req.body.rating,
+            longitude: req.body.longitude,
+            latitude: req.body.latitude,
+            available: req.body.available
+        },
+        function (err, user) {
+            if (err) {
+                return res.status(500).send("There was a problem adding the information to the database.");
+            }
+            res.status(200).send(user);
+        });
+});
+
+//PUT: update user info
+router.put('/:id', function (req, res) {
+    User.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, user) {
+        if (err) return res.status(500).send("There was a problem updating the driver.");
+        res.status(200).send(user);
+    });
+});
+//DELETE: delete a user
 router.delete('/:id', function (req, res) {
-    Admin.findByIdAndRemove(req.params.id, function (err, admin) {
-        if (err) return res.status(500).send("There was a problem deleting the admin.");
-        res.status(200).send("admin: "+ admin.name +" was deleted.");
+    User.findByIdAndRemove(req.params.id, function (err, user) {
+        if (err) return res.status(500).send("There was a problem deleting the user.");
+        res.status(200).send("User: "+ user.name +" was deleted.");
     });
 });
-
 module.exports = router;
