@@ -17,14 +17,14 @@ router.post('/driverDistance', function(req, res) {
         .then((response) => {
             var results = response.json.results;
             var result = results[0];
-            var thisFuckingLocation = result.geometry.location;
-            var thatFuckingLocation = {
+            var thisLocation = result.geometry.location;
+            var thatLocation = {
                 "lat": 40.478157,
                 "lng": -88.95118699999999
             }
             googleMapsClient.distanceMatrix({
-                origins: [ thisFuckingLocation ],
-                destinations: [ thatFuckingLocation ]
+                origins: [ thisLocation ],
+                destinations: [ thatLocation ]
             })
                 .asPromise()
                 .then(response => {
@@ -33,12 +33,12 @@ router.post('/driverDistance', function(req, res) {
                     res.send(duration);
                 })
                 .catch(err => {
-                    res.send('you done fucked up in this other function right meow');
+                    res.send('There was a problem with your function');
                     console.log(err);
                 });
         })
         .catch((err) => {
-            res.send('you fucked up now');
+            res.send('ERROR');
             console.log(err);
         });
 
