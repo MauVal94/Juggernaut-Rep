@@ -5,7 +5,7 @@
         "name" : "Alford Curry",
         "age" : 26,
         "gender" : "male",
-        "UserRatingAvg": 0,
+        "UserRating": 0,
         "email" : "alfordcurry@earthpure.com"
 }
 {
@@ -14,7 +14,7 @@
         "name" : "Gray Lynch",
         "age" : 20,
         "gender" : "male",
-        "UserRatingAvg": 0,
+        "UserRating": 0,
         "email" : "graylynch@earthpure.com"
 }
 {
@@ -23,7 +23,7 @@
         "name" : "Blanche Matthews",
         "age" : 36,
         "gender" : "female",
-        "UserRatingAvg": 0,
+        "UserRating": 0,
         "email" : "blanchematthews@earthpure.com"
 }
 ]
