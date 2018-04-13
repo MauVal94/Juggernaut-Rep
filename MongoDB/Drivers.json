@@ -1,77 +1,37 @@
 [
   {
-    "index": 0,
-    "driver_id": "5ac63b9135c3f62c28456620",
-    "isActive": false,
-    "age": 21,
     "name": "Roxie Ingram",
-    "gender": "female",
-    "email": "roxieingram@zidox.com",
-    "phone": "+1 (841) 543-3225",
     "driverRating": 0,
-    "address": "732 Madeline Court, Belgreen, New York, 2016",
-    "registered_driver_since": "2017-09-14T12:45:51 +05:00",
+    "longitude": 149.018734,
     "latitude": 28.880215,
-    "longitude": 149.018734
+    "isActive": false
   },
   {
-    "index": 1,
-    "driver_id": "5ac63b91422c7527247becf2",
-    "isActive": false,
-    "age": 34,
     "name": "Nellie Burke",
-    "gender": "female",
-    "email": "nellieburke@zidox.com",
-    "phone": "+1 (808) 480-2697",
     "driverRating": 0,
-    "address": "342 Story Street, Dundee, Idaho, 4728",
-    "registered_driver_since": "2018-03-06T09:17:49 +06:00",
+    "longitude": -167.35306",
     "latitude": 58.383484,
-    "longitude": -167.35306
+    "isActive": false
   },
   {
-    "index": 2,
-    "driver_id": "5ac63b91a79737bf544b2557",
-    "isActive": true,
-    "age": 30,
     "name": "Gutierrez Patterson",
-    "gender": "male",
-    "email": "gutierrezpatterson@zidox.com",
-    "phone": "+1 (972) 446-2702",
     "driverRating": 0,
-    "address": "639 Fiske Place, Nile, Alaska, 8914",
-    "registered_driver_since": "2018-02-02T11:58:51 +06:00",
+    "longitude": -145.996884,
     "latitude": -85.788763,
-    "longitude": -145.996884
+    "isActive": true
   },
   {
-    "index": 3,
-    "driver_id": "5ac63b915e92827af4a3584d",
-    "isActive": true,
-    "age": 29,
     "name": "Polly Gregory",
-    "gender": "female",
-    "email": "pollygregory@zidox.com",
-    "phone": "+1 (997) 426-3380",
     "driverRating": 0,
-    "address": "731 Hooper Street, Ahwahnee, Pennsylvania, 8500",
-    "registered_driver_since": "2018-01-06T06:51:15 +06:00",
+    "longitude": -75.442901,
     "latitude": -65.609318,
-    "longitude": -75.442901
+    "isActive": true
   },
   {
-    "index": 4,
-    "driver_id": "5ac63b911a9897e3a21c8ea0",
-    "isActive": true,
-    "age": 33,
     "name": "Phoebe Travis",
-    "gender": "female",
-    "email": "phoebetravis@zidox.com",
-    "phone": "+1 (912) 579-3537",
     "driverRating": 0,
-    "address": "263 Christopher Avenue, Valmy, Missouri, 5020",
-    "registered_driver_since": "2017-09-29T12:00:16 +05:00",
+    "longitude": 113.140966,
     "latitude": 89.269901,
-    "longitude": 113.140966
+    "isActive": true
   }
 ]
