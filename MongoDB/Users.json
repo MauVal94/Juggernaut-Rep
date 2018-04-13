@@ -1,29 +1,23 @@
 [
 {
-        "_id" : ObjectId("5ac97dd0243d1fcfc9568505"),
-        "index" : 0,
         "name" : "Alford Curry",
-        "age" : 26,
-        "gender" : "male",
         "userRating": 0,
-        "email" : "alfordcurry@earthpure.com"
+        "longitude": -98.22737
+        "latitude": 27.56657
+        "isActive": true
 }
 {
-        "_id" : ObjectId("5ac97dd0243d1fcfc9568506"),
-        "index" : 1,
         "name" : "Gray Lynch",
-        "age" : 20,
-        "gender" : "male",
         "userRating": 0,
-        "email" : "graylynch@earthpure.com"
+        "longitude": -99.28206
+        "latitude": 29.9547
+        "isActive": false
 }
 {
-        "_id" : ObjectId("5ac97dd0243d1fcfc9568507"),
-        "index" : 2,
         "name" : "Blanche Matthews",
-        "age" : 36,
-        "gender" : "female",
         "userRating": 0,
-        "email" : "blanchematthews@earthpure.com"
+        "longitude": -96.4695
+        "latitude": 31.80275
+        "isActive": true
 }
 ]
