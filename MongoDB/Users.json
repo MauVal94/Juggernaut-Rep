@@ -2,22 +2,22 @@
 {
         "name" : "Alford Curry",
         "userRating": 0,
-        "longitude": -98.22737
-        "latitude": 27.56657
+        "longitude": -98.22737,
+        "latitude": 27.56657,
         "isActive": true
 }
 {
         "name" : "Gray Lynch",
         "userRating": 0,
-        "longitude": -99.28206
-        "latitude": 29.9547
+        "longitude": -99.28206,
+        "latitude": 29.9547,
         "isActive": false
 }
 {
         "name" : "Blanche Matthews",
         "userRating": 0,
-        "longitude": -96.4695
-        "latitude": 31.80275
+        "longitude": -96.4695,
+        "latitude": 31.80275,
         "isActive": true
 }
 ]
