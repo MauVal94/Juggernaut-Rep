@@ -5,14 +5,14 @@
         "longitude": -98.22737,
         "latitude": 27.56657,
         "isActive": true
-}
+},
 {
         "name" : "Gray Lynch",
         "userRating": 0,
         "longitude": -99.28206,
         "latitude": 29.9547,
         "isActive": false
-}
+},
 {
         "name" : "Blanche Matthews",
         "userRating": 0,
