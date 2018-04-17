@@ -28,6 +28,7 @@ router.get('/', function (req, res) {
 router.post('/', function (req,res){
     User.create({
             name: req.body.name,
+            email: req.body.email,
             rating: req.body.rating,
             longitude: req.body.longitude,
             latitude: req.body.latitude,
