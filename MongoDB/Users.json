@@ -1,26 +1,23 @@
 [
 {
         "name" : "Alford Curry",
-	"email" : "Alford.Curry101@gmail.com",
         "userRating": 0,
-        "longitude": -98.22737,
-        "latitude": 27.56657,
+        "longitude": 29.9545,
+        "latitude": -97.827,
         "isActive": true
 },
 {
         "name" : "Gray Lynch",
-	"email" : "Gray.Lynch2014@gmail.com",
         "userRating": 0,
-        "longitude": -99.28206,
-        "latitude": 29.9547,
+        "longitude": 29.9211,
+        "latitude": -98.0265,
         "isActive": false
 },
 {
         "name" : "Blanche Matthews",
-	"email" : "Blanche.MatthewsRocks99@gmail.com",
         "userRating": 0,
-        "longitude": -96.4695,
-        "latitude": 31.80275,
+        "longitude": 29.94665,
+        "latitude": -97.9021,
         "isActive": true
 }
 ]
