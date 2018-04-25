@@ -54,24 +54,17 @@ router.get('/distance', function(req, res) {
         destination(function (err, data) {
             thatLocation = data;
             googleMapsClient.distanceMatrix({
-                origins: [thisLocation],
-                destinations: [ thatLocation ]
-
-            })
-                .asPromise()
-                .then(response => {
+                    origins: [thisLocation],
+                    destinations: [thatLocation]
+                },
+                function (response) {
                     var duration = response.json.rows[0].elements[0].duration.text;
                     var distance = response.json.rows[0].elements[0].distance.text;
-                    res.send(duration+" "+distance);
-                })
-                .catch(err => {
-                    res.send('There was a problem with your function');
-                    console.log(err);
+                    res.send(duration + " " + distance);
                 });
-
         });
-        })
-    });
+    })
+});
 
 router.get('/proximity', function(req, res) {
     var users = req.query.userID;
@@ -104,44 +97,33 @@ router.get('/proximity', function(req, res) {
         origin(function (err, data) {
             thisLocation = data;
 
-            var i;
-            var isAccepted;
-            var acceptedDrivers = [];
-            Drivers.find({}, function (err, driver) {
+            Drivers.find({}, function (err, drivers) {
                 if (err) {
                     return res.status(500).send("There was a problem finding the driver.");
                 }
 
-                for (i = 0; i < driverCount; i++) {
+                let acceptedDrivers = drivers.filter(function(driver){
                     thatLocation = {
-                        "lat": JSON.stringify(driver[i].latitude),
-                        "lng": JSON.stringify(driver[i].longitude)
+                        "lat": JSON.stringify(driver.latitude),
+                        "lng": JSON.stringify(driver.longitude)
                     };
 
                     googleMapsClient.distanceMatrix({
                         origins: [thisLocation],
                         destinations: [thatLocation]
 
-                    })
-                        .asPromise()
-                        .then(response => {
+                    }, function(response) {
                             let distance = response.json.rows[0].elements[0].distance.value / 1000;
                             console.log(distance);
                             if (distance < proximity) {
-                                isAccepted = true;
-                            }
-                            else{
-                                isAccepted = false;
+                                return driver;
                             }
                         })
                         .catch(err => {
                             res.send('There was a problem with your function');
                             console.log(err);
                         })
-                    if(isAccepted) {
-                        acceptedDrivers.push(driver[i]);
-                    }
-                }
+                });
                 res.send(acceptedDrivers);
             });
         });
