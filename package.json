@@ -11,6 +11,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "^4.16.3",
+    "geolib": "^2.0.24",
     "google": "^2.1.0",
     "google-maps": "^3.2.1",
     "http-errors": "~1.6.2",
