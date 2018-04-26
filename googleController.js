@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-const http = require('http');
 var googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyCUzmUT7tJTRJtZ5KpL4Y4Mr6DmaPhSt6A',
     Promise: Promise
 });
+var geolib = require('geolib');
 
 var Drivers = require('./users/driver');
 var Users = require('./users/user');
@@ -68,8 +68,8 @@ router.get('/proximity', function(req, res) {
     var origin = (function (callback) {
         Users.findById(usersID, function (err, user) {
             thisLocation = {
-                "lat": (JSON.stringify(user.latitude)),
-                "lng": (JSON.stringify(user.longitude))
+                latitude: (JSON.stringify(user.latitude)),
+                longitude: (JSON.stringify(user.longitude))
             };
             callback(null, thisLocation);
         });
@@ -83,34 +83,20 @@ router.get('/proximity', function(req, res) {
             if (err) {
                 return res.status(500).send("There was a problem finding the driver.");
             }
+            var acceptedDriver = drivers.filter(function (drivers){
 
-            let acceptedDriver =   drivers.filter(async function (driver) {
-                var isAvailable =  await new Promise(function(resolve, reject){
-                    thatLocation = {
-                        "lat": JSON.stringify(driver.latitude),
-                        "lng": JSON.stringify(driver.longitude)
-                    };
-
-                    googleMapsClient.distanceMatrix({
-                        origins: [thisLocation],
-                        destinations: [thatLocation]
-
-                    }, function (err, result) {
-                        let distance = result.json.rows[0].elements[0].distance.value / 1000;
-                        console.log(distance);
-                        let available = JSON.stringify(driver.available);
-                        if (distance < proximity && available) {
-                            resolve(isAvailable = true);
-                        }
-                        else
-                           resolve(isAvailable = false);
-                    });
-                });
-                console.log(isAvailable);
-                return isAvailable;
+            thatLocation = {
+                latitude: JSON.stringify(drivers.latitude),
+                longitude: JSON.stringify(drivers.longitude)
+            };
+            var hello = geolib.isPointInCircle(
+                thisLocation,
+                thatLocation,
+                proximity*1000
+            )
+            return hello;
             });
-            console.log(acceptedDriver);
-            res.send(acceptedDriver)
+            res.send(acceptedDriver);
         });
     });
 });
