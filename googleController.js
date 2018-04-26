@@ -89,12 +89,12 @@ router.get('/proximity', function(req, res) {
                 latitude: JSON.stringify(drivers.latitude),
                 longitude: JSON.stringify(drivers.longitude)
             };
-            var hello = geolib.isPointInCircle(
+            var isAvailable = geolib.isPointInCircle(
                 thisLocation,
                 thatLocation,
                 proximity*1000
             )
-            return hello;
+            return isAvailable;
             });
             res.send(acceptedDriver);
         });
